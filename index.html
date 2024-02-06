@@ -4,8 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lonesome Cowpoke</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        @font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Light.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2'),
+         url('fonts/Asfalt-Regular.otf') format('opentype'),
+         url('fonts/Asfalt-Regular.woff') format('woff'),
+         url('fonts/Asfalt-Regular.woff2') format('woff2'),
+         url('fonts/Asfalt-Medium.otf') format('opentype'),
+         url('fonts/Asfalt-Medium.woff') format('woff'),
+         url('fonts/Asfalt-Medium.woff2') format('woff2'),
+         url('fonts/Asfalt-Bold.otf') format('opentype'),
+         url('fonts/Asfalt-Bold.woff') format('woff'),
+         url('fonts/Asfalt-Bold.woff2') format('woff2');
 
+    /* Add additional lines for other font formats if needed */
+}
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 8000px;
+            overflow-y: auto;
+        }
+
+        .hero {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 5;
+        }
+        
+        
+            h1 {
+                font-family: 'Asfalt', sans-serif;
+                font-size: 200px;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.692);
+                position: fixed;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 10;
+                mix-blend-mode: difference;
+                line-height: .8;
+            }
+        
+
+
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Initially hide all videos */
+            opacity: 0; /* Set initial opacity to 0 */
+            transition: opacity 2s ease-in-out; /* Add transition property */
+        }
+
+        .active-video {
+            display: block; /* Display the active video */
+            opacity: 1; /* Set opacity to 1 for active video */
+
+        }
+    </style>
 </head>
 <body>
 
