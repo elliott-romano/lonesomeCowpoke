@@ -1,35 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Scroll Interaction Example</title>
-    <style>
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: overflow-y;
-        }
-        
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: fixed;
-        }
-
-        .content {
-            height: 3000px; /* Just for demonstration */
-        }
-        
-        .full-width-video {
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-        
-        }
-
-    </style>
+    <title>Lonesome Cowpoke</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -46,20 +19,6 @@
             </video>
           </div>
     </div>
-    <script>
-        window.addEventListener('scroll', function() {
-            // Log the current scroll position
-            console.log(window.scrollY);
-
-            if (window.scrollY > 500) {
-                console.log('You have scrolled more than 500 pixels');
-                this.classList.toggle('active');
-            }
-          
-        });
-
-        
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

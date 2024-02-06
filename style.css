@@ -4,100 +4,73 @@
          url('fonts/Asfalt-Light.woff') format('woff'),
          url('fonts/Asfalt-Light.woff2') format('woff2'),
          url('fonts/Asfalt-Regular.otf') format('opentype'),
-         url('fonts/Asfalt-Light.woff') format('woff'),
-         url('fonts/Asfalt-Light.woff2') format('woff2'),
+         url('fonts/Asfalt-Regular.woff') format('woff'),
+         url('fonts/Asfalt-Regular.woff2') format('woff2'),
          url('fonts/Asfalt-Medium.otf') format('opentype'),
-         url('fonts/Asfalt-Light.woff') format('woff'),
-         url('fonts/Asfalt-Light.woff2') format('woff2'),
+         url('fonts/Asfalt-Medium.woff') format('woff'),
+         url('fonts/Asfalt-Medium.woff2') format('woff2'),
          url('fonts/Asfalt-Bold.otf') format('opentype'),
-         url('fonts/Asfalt-Light.woff') format('woff'),
-         url('fonts/Asfalt-Light.woff2') format('woff2');
+         url('fonts/Asfalt-Bold.woff') format('woff'),
+         url('fonts/Asfalt-Bold.woff2') format('woff2');
 
     /* Add additional lines for other font formats if needed */
 }
 
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 6000px;
+            overflow-y: auto;
+        }
+
+        .hero {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 5;
+        }
+        
+        
+            h1 {
+                font-family: 'Asfalt', sans-serif;
+                font-size: 200px;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.692);
+                position: fixed;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 10;
+                mix-blend-mode: difference;
+                line-height: .8;
+            }
+        
 
 
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
-body {
-    /* background-image: linear-gradient(purple, yellow); */
-}
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Initially hide all videos */
+            opacity: 0; /* Set initial opacity to 0 */
+            transition: opacity 2s ease-in-out; /* Add transition property */
+        }
 
- /* Gradient Background Animation */
- body:before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(90deg, #ff0000, #F9DE78);
-    background-size: 400% 400%;
-    animation: gradientAnimation .1s ease infinite;
-}
+        .active-video {
+            display: block; /* Display the active video */
+            opacity: 1; /* Set opacity to 1 for active video */
 
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-
-
-h1 {
-    font-family: 'Asfalt', sans-serif;
-    font-size: 24px;
-    text-align: center;
-}
-
-.hero h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    font-family: 'Asfalt', sans-serif; /* Include the custom font or replace with your preferred font */
-    font-size: 10vw; /* Adjust the font size based on your preference */
-    color: white;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-
-
-
-h3 {
-    font-family: 'BhuTuka Expanded One', serif;
-    font-size: 48px;
-    text-align: center;
-}
-
-p {
-    font-family: serif;
-    font-size: 24px;
-    /* text-align: center; */
-}
-
-.content-wrapper{
-    width: 600px;
-    margin: 0 auto;
-}
-
-
-
-img {
-    width: 60%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
+        }
