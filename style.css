@@ -1,14 +1,78 @@
+@font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Light.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2'),
+         url('fonts/Asfalt-Regular.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2'),
+         url('fonts/Asfalt-Medium.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2'),
+         url('fonts/Asfalt-Bold.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2');
+
+    /* Add additional lines for other font formats if needed */
+}
+
+
+
 
 body {
-    background-image: linear-gradient(purple, yellow);
+    /* background-image: linear-gradient(purple, yellow); */
 }
+
+ /* Gradient Background Animation */
+ body:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(90deg, #ff0000, #F9DE78);
+    background-size: 400% 400%;
+    animation: gradientAnimation .1s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 
 
 h1 {
-    font-family: 'BhuTuka Expanded One', serif;
-    font-size: 88px;
+    font-family: 'Asfalt', sans-serif;
+    font-size: 24px;
     text-align: center;
 }
+
+.hero h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-family: 'Asfalt', sans-serif; /* Include the custom font or replace with your preferred font */
+    font-size: 10vw; /* Adjust the font size based on your preference */
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+
 
 h3 {
     font-family: 'BhuTuka Expanded One', serif;

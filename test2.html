@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lonesome Cowpoke</title>
+    <style>
+        @font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Light.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2'),
+         url('fonts/Asfalt-Regular.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2'),
+         url('fonts/Asfalt-Medium.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2'),
+         url('fonts/Asfalt-Bold.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2');
+
+    /* Add additional lines for other font formats if needed */
+}
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 6000px;
+            overflow-y: auto;
+        }
+
+        .hero {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 5;
+        }
+        
+        
+            h1 {
+                font-family: 'Asfalt', sans-serif;
+                font-size: 200px;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.692);
+                position: fixed;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 10;
+                mix-blend-mode: difference;
+                line-height: .8;
+            }
+        
+
+
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Initially hide all videos */
+            opacity: 0; /* Set initial opacity to 0 */
+            transition: opacity 2s ease-in-out; /* Add transition property */
+        }
+
+        .active-video {
+            display: block; /* Display the active video */
+            opacity: 1; /* Set opacity to 1 for active video */
+
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>Lonesome Cowpoke</h1>
+    </div>
+    <div id="video-container">
+        <video id="video1" class="background-video active-video" autoplay loop muted preload="auto">
+            <source src="video/00.mp4" type="video/mp4">
+        </video>
+        <video id="video2" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/01.mp4" type="video/mp4">
+        </video>
+        <video id="video3" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/02.mp4" type="video/mp4">
+        </video>
+        <video id="video4" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/03.mp4" type="video/mp4">
+        </video>
+        <video id="video5" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/04.mp4" type="video/mp4">
+        </video>
+        <video id="video6" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/05.mp4" type="video/mp4">
+        </video>
+        <video id="video7" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/06.mp4" type="video/mp4">
+        </video>
+        <video id="video8" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/07.mp4" type="video/mp4">
+        </video>
+        <video id="video9" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/08.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let videos = document.querySelectorAll(".background-video");
+
+            window.addEventListener("scroll", function () {
+                // Log the current scroll position
+                console.log(window.scrollY);
+
+                let swapPosition = 500; // Adjust this value based on when you want to switch videos
+
+                videos.forEach((video, index) => {
+                    if (window.scrollY >= swapPosition * index && window.scrollY < swapPosition * (index + 1)) {
+                        video.classList.add("active-video");
+                    } else {
+                        video.classList.remove("active-video");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
