@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lonesome Cowpoke</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <style>
     @font-face {
     font-family: 'Asfalt'; /* You can choose any name for your font */
@@ -56,7 +58,7 @@
             font-weight: bold;
             font-size: 200px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.692);
+            color: rgba(255, 255, 255, 0.453);
             position: fixed;
             top: 35%;
             left: 50%;
@@ -64,6 +66,7 @@
             z-index: 10;
             mix-blend-mode: difference;
             line-height: .8;
+            opacity: .7;
         }
         
         .button {
@@ -126,6 +129,7 @@
     h1 {
         font-size: 94px; /* Adjust font size for smaller screens */
         transform: translate(-50%, -10%);
+        color: rgba(255, 255, 255, 0.692); /* Initial color */
     }
 }
 
@@ -134,7 +138,7 @@
 <body>
 
     <div class="hero">
-        <h1>Lonesome Cowpoke</h1>
+        <h1 id="title">Lonesome Cowpoke</h1>
         <button id="audio-control" class="button">Play</button>
         <a href="about.html" id="info-button" class="button">Info</a>
     </div>
@@ -292,6 +296,34 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add event listener for mouseover event
     infoButton.addEventListener('mouseover', playHoverSound);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+            // Get reference to the h1 element
+            const title = document.getElementById('title');
+            
+            // Define the colors to oscillate between
+            const color1 = '#E64854'; // red
+            const color2 = '#F9DE78'; // yellow
+            
+            // Initial color
+            let currentColor = color1;
+            
+            // Function to oscillate between colors
+            function oscillateColors() {
+                // Toggle between colors
+                if (currentColor === color1) {
+                    currentColor = color2;
+                } else {
+                    currentColor = color1;
+                }
+                // Apply the current color to the h1 element
+                title.style.color = currentColor;
+            }
+            
+            // Call the oscillateColors function repeatedly with a delay of 0.5 seconds
+            setInterval(oscillateColors, 75);
+        });
+
 </script>
     
     

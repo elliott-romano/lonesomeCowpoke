@@ -88,6 +88,7 @@
             margin-top: 0;
             line-height: 0.9;
             margin-bottom: 1px;
+            color: rgba(255, 255, 255, 0.453);
         }
 
         .title p {
@@ -156,12 +157,12 @@
         
 
         <section class="title">
-            <h1>The Lonesome Cowpoke</h1>
+            <h1 id="title">The Lonesome Cowpoke</h1>
             <p>by Elliott Romano</p>
         </section>
 
         <section>
-            <h2>They never said being a cowboy would be easy...</h2>
+            <h2 id=>They never said being a cowboy would be easy...</h2>
             <p>Hell, it's not like you get to pick anyway. You're born into it, surrounded by wide-open spaces and the vast expanse of the untamed West. It's a life carved out by grit and saddle leather, where the sunsets paint the sky in hues of orange and pink, but the days are filled with hard work and the constant dance with the land.</p>
             <p>Out here, every sunrise is a promise, and every sunset, a reflection on the day's toil. It's a rugged existence, one that demands respect for the land and the creatures that roam it. As the dust settles on the prairie, so too does the reality of a cowboy's life. It's not for the faint-hearted, that's for damn sure.</p>
             <h2>You wake up with the sun</h2>
@@ -227,8 +228,34 @@
 
     // Add event listener for mouseover event
     infoButton.addEventListener('mouseover', playHoverSound);
-});
+    });
     
+    document.addEventListener("DOMContentLoaded", function () {
+            // Get reference to the h1 element
+            const title = document.getElementById('title');
+            
+            // Define the colors to oscillate between
+            const color1 = '#E64854'; // red
+            const color2 = '#F9DE78'; // yellow
+            
+            // Initial color
+            let currentColor = color1;
+            
+            // Function to oscillate between colors
+            function oscillateColors() {
+                // Toggle between colors
+                if (currentColor === color1) {
+                    currentColor = color2;
+                } else {
+                    currentColor = color1;
+                }
+                // Apply the current color to the h1 element
+                title.style.color = currentColor;
+            }
+            
+            // Call the oscillateColors function repeatedly with a delay of 0.5 seconds
+            setInterval(oscillateColors, 75);
+        });
         </script>
 
 
