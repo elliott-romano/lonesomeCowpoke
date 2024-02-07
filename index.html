@@ -6,28 +6,39 @@
     <title>Lonesome Cowpoke</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
-        @font-face {
+    @font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Regular.otf') format('opentype'),
+         url('fonts/Asfalt-Regular.woff') format('woff'),
+         url('fonts/Asfalt-Regular.woff2') format('woff2');
+         
+        }
+    @font-face {
     font-family: 'Asfalt'; /* You can choose any name for your font */
     src: url('fonts/Asfalt-Light.otf') format('opentype'),
          url('fonts/Asfalt-Light.woff') format('woff'),
-         url('fonts/Asfalt-Light.woff2') format('woff2'),
-         url('fonts/Asfalt-Regular.otf') format('opentype'),
-         url('fonts/Asfalt-Regular.woff') format('woff'),
-         url('fonts/Asfalt-Regular.woff2') format('woff2'),
-         url('fonts/Asfalt-Medium.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff2') format('woff2');
+         font-weight: light;
+        }
+    @font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Medium.otf') format('opentype'),
          url('fonts/Asfalt-Medium.woff') format('woff'),
-         url('fonts/Asfalt-Medium.woff2') format('woff2'),
-         url('fonts/Asfalt-Bold.otf') format('opentype'),
+         url('fonts/Asfalt-Medium.woff2') format('woff2');
+         font-weight: medium;
+        }
+    @font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Bold.otf') format('opentype'),
          url('fonts/Asfalt-Bold.woff') format('woff'),
          url('fonts/Asfalt-Bold.woff2') format('woff2');
-
-    /* Add additional lines for other font formats if needed */
-}
+         font-weight: Bold;
+        }
 
         body, html {
             margin: 0;
             padding: 0;
-            height: 8000px;
+            height: 10000px;
             overflow-y: auto;
         }
 
@@ -38,30 +49,57 @@
             overflow: hidden;
             z-index: 5;
         }
+
         
+        h1 {
+            font-family: 'Asfalt', sans-serif;
+            font-weight: bold;
+            font-size: 200px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.692);
+            position: fixed;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            mix-blend-mode: difference;
+            line-height: .8;
+        }
         
-            h1 {
-                font-family: 'Asfalt', sans-serif;
-                font-size: 200px;
-                text-align: center;
-                color: rgba(255, 255, 255, 0.692);
-                position: fixed;
-                top: 35%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 10;
-                mix-blend-mode: difference;
-                line-height: .8;
-            }
-        
+        .button {
+    position: fixed;
+    border-radius: 100%;
+    background-color: rgba(255, 255, 255);
+    padding: 20px 20px;
+    font-size: 18px;
+    font-weight:bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Asfalt', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    z-index: 15;
+    border-color: #ffffff00;
+}
+
+#info-button {
+    top: 20px;
+    left: 20px;
+}
+
+#audio-control {
+    top: 20px;
+    right: 20px;
+}
 
 
         #video-container {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vh;
+            height: 100vh;
             overflow: hidden;
         }
 
@@ -82,12 +120,23 @@
             opacity: 1; /* Set opacity to 1 for active video */
 
         }
+
+        /* Media query for smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 94px; /* Adjust font size for smaller screens */
+        transform: translate(-50%, -10%);
+    }
+}
+
     </style>
 </head>
 <body>
 
     <div class="hero">
         <h1>Lonesome Cowpoke</h1>
+        <button id="audio-control" class="button">Play</button>
+        <a href="about.html" id="info-button" class="button">Info</a>
     </div>
     <div id="video-container">
         <video id="video1" class="background-video active-video" autoplay loop muted preload="auto">
@@ -137,27 +186,114 @@
         </video>
         <video id="video16" class="background-video" autoplay loop muted preload="auto">
             <source src="video/15.mp4" type="video/mp4">
+        </video>
+        <video id="video17" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/16.mp4" type="video/mp4">
+        </video>
+        <video id="video18" class="background-video" autoplay loop muted preload="auto">
+            <source src="video/18.mp4" type="video/mp4">
+        </video>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let videos = document.querySelectorAll(".background-video");
-
+            let videoArray = Array.from(videos); // Convert NodeList to array
+    
+            // Shuffle the array of videos
+            shuffleArray(videoArray);
+    
+            // Function to shuffle the array
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+    
             window.addEventListener("scroll", function () {
                 // Log the current scroll position
                 console.log(window.scrollY);
-
+    
                 let swapPosition = 500; // Adjust this value based on when you want to switch videos
-
-                videos.forEach((video, index) => {
+    
+                videoArray.forEach((video, index) => {
                     if (window.scrollY >= swapPosition * index && window.scrollY < swapPosition * (index + 1)) {
                         video.classList.add("active-video");
                     } else {
                         video.classList.remove("active-video");
                     }
                 });
+    
+                // Check if user has scrolled to the bottom of the page
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    // Revert scroll position to 0
+                    window.scrollTo(0, 0);
+                }
             });
         });
-    </script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+    // Get reference to the audio element
+    const audio = new Audio('audio/avatar.wav');
+
+    // Get reference to the button
+    const audioButton = document.getElementById('audio-control');
+
+    // Initialize audio playing status
+    let isAudioPlaying = false;
+
+    // Function to toggle audio play/pause and update button text
+    function toggleAudio() {
+        if (isAudioPlaying) {
+            audio.pause();
+            audioButton.textContent = 'Play';
+            audio.loop = false; // Disable looping when paused
+        } else {
+            audio.play();
+            audioButton.textContent = 'Pause';
+            audio.loop = true; // Enable looping when playing
+        }
+        isAudioPlaying = !isAudioPlaying;
+    }
+
+    // Add click event listener to the button
+    audioButton.addEventListener('click', toggleAudio);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Get reference to the audio element
+    const audio = new Audio('audio/bang.mp3');
+
+    // Get reference to the button
+    const infoButton = document.getElementById('info-button');
+
+    // Function to play sound on hover
+    function playHoverSound() {
+        audio.play();
+    }
+
+    // Add event listener for mouseover event
+    infoButton.addEventListener('mouseover', playHoverSound);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Get reference to the audio element
+    const audio = new Audio('audio/bang.mp3');
+
+    // Get reference to the button
+    const infoButton = document.getElementById('info-button');
+
+    // Function to play sound on hover
+    function playHoverSound() {
+        audio.play();
+    }
+
+    // Add event listener for mouseover event
+    infoButton.addEventListener('mouseover', playHoverSound);
+});
+</script>
+    
+    
 </body>
 </html>

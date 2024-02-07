@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lonesome Cowpoke</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
         @font-face {
             font-family: 'Asfalt';
@@ -25,29 +24,8 @@
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow: auto;
-        }
-
-        .text-column {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            height: 90vh;
+            height: 8000px;
             overflow-y: auto;
-            z-index: 15;
-            background-color: rgba(255, 255, 255, 0.8); /* Adjust background color and opacity */
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Optional: Add box shadow for better visibility */
-            border-radius: 10px; /* Optional: Add border radius for rounded corners */
-        }
-
-        .text-content {
-            font-family: 'Asfalt', sans-serif;
-            color: #333; /* Adjust text color */
-            line-height: 1.6;
         }
 
         .hero {
@@ -97,6 +75,19 @@
             display: block;
             opacity: 1;
         }
+
+        /* New styles for the play/pause button */
+        .play-pause-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -104,47 +95,34 @@
 <div class="hero">
     <h1>Lonesome Cowpoke</h1>
 </div>
-
-<div class="text-column">
-    <div class="text-content">
-        <!-- Your text content goes here -->
-        <p>This is a sample text column. You can add your own content here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus justo in felis lobortis, at blandit nisi tristique. Proin feugiat tortor ut libero tincidunt, et faucibus ligula lobortis. Phasellus et massa vel lorem ultricies cursus. Sed vitae mi eu risus feugiat tristique. Nulla facilisi. Mauris ut purus vitae elit vestibulum sodales ac non ligula. Aliquam quis convallis urna. Integer vestibulum, mauris eu fermentum efficitur, neque magna suscipit ex, ac laoreet arcu velit non urna. Sed nec nulla sed odio convallis pellentesque a sed erat. Integer finibus euismod lorem, at sodales velit elementum non. In volutpat fermentum lorem, eget interdum odio varius nec. Integer a ante lectus. Cras vehicula ante in quam efficitur, a cursus ex aliquam. Aenean efficitur erat vel velit elementum lacinia.</p>
-        <p>Donec commodo odio libero, eget fermentum mi condimentum eu. Integer malesuada elit id justo tempor, id hendrerit purus viverra. Cras eleifend dui in tempus laoreet. Sed interdum libero ut felis dictum, at placerat ipsum feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam elementum vel mi in feugiat. Ut volutpat vestibulum est, nec consequat velit lacinia vel. Nullam fermentum vehicula erat, eu convallis purus vehicula non.</p>
-        <!-- Add more paragraphs as needed -->
-    </div>
-</div>
-
 <div id="video-container">
-    <video id="video1" class="background-video active-video" autoplay loop muted preload="auto">
-        <source src="video/00.mp4" type="video/mp4">
-    </video>
-    <video id="video2" class="background-video active-video" autoplay loop muted preload="auto">
-        <source src="video/01.mp4" type="video/mp4">
-    </video>
-    <video id="video3" class="background-video active-video" autoplay loop muted preload="auto">
-        <source src="video/02.mp4" type="video/mp4">
-    </video>
+    <!-- Videos omitted for brevity -->
 </div>
+
+<!-- New button for play/pause -->
+<button class="play-pause-btn">Play</button>
+
+<audio id="audio" src="audio/avatar.wav"></audio>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         let videos = document.querySelectorAll(".background-video");
+        const audio = document.getElementById('audio');
+        const playPauseBtn = document.querySelector('.play-pause-btn');
 
-        window.addEventListener("scroll", function () {
-            // Log the current scroll position
-            console.log(window.scrollY);
+        // Function to toggle play/pause and button text
+        function togglePlayPause() {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = 'Pause';
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = 'Play';
+            }
+        }
 
-            let swapPosition = 500; // Adjust this value based on when you want to switch videos
-
-            videos.forEach((video, index) => {
-                if (window.scrollY >= swapPosition * index && window.scrollY < swapPosition * (index + 1)) {
-                    video.classList.add("active-video");
-                } else {
-                    video.classList.remove("active-video");
-                }
-            });
-        });
+        // Add event listener to play/pause button
+        playPauseBtn.addEventListener('click', togglePlayPause);
     });
 </script>
 </body>

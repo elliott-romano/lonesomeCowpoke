@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lonesome Cowpoke</title>
+    <style>
+            @font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Regular.otf') format('opentype'),
+         url('fonts/Asfalt-Regular.woff') format('woff'),
+         url('fonts/Asfalt-Regular.woff2') format('woff2');
+         
+        }
+    @font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Light.otf') format('opentype'),
+         url('fonts/Asfalt-Light.woff') format('woff'),
+         url('fonts/Asfalt-Light.woff2') format('woff2');
+         font-weight: light;
+        }
+    @font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Medium.otf') format('opentype'),
+         url('fonts/Asfalt-Medium.woff') format('woff'),
+         url('fonts/Asfalt-Medium.woff2') format('woff2');
+         font-weight: medium;
+        }
+    @font-face {
+    font-family: 'Asfalt'; /* You can choose any name for your font */
+    src: url('fonts/Asfalt-Bold.otf') format('opentype'),
+         url('fonts/Asfalt-Bold.woff') format('woff'),
+         url('fonts/Asfalt-Bold.woff2') format('woff2');
+         font-weight: Bold;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Asfalt', sans-serif;
+            line-height: 1.4;
+            overflow: auto; /* Hide scrollbars */
+        }
+
+        h2 {
+            font-size: 2.5em;
+            font-weight: lighheavyt;
+            font-family: 'asfalt', sans-serif;
+            margin-top: 0;
+            text-transform: uppercase;
+            padding:40px;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.5; /* Adjust as needed */
+            filter:blur(15px);
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            color: rgb(0, 0, 0); /* Adjust text color for visibility */
+        }
+
+        h1 {
+            font-family: 'asfalt', sans-serif;
+            font-weight: 900;
+            font-size: 6.5em;
+            margin-top: 0;
+            line-height: 0.9;
+            margin-bottom: 1px;
+        }
+
+        .title p {
+    
+            margin-top: 16px;
+        }
+
+        h2 {
+            margin-top: 32px;
+        }
+
+        p { 
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size:18px;
+        }
+
+        .title {
+            margin-bottom: 100px;
+        }
+
+        .button {
+    position: fixed;
+    border-radius: 100%;
+    background-color: rgba(255, 255, 255);
+    padding: 20px 20px;
+    font-size: 18px;
+    font-weight:bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Asfalt', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    z-index: 15;
+    border-color: #ffffff00;
+}
+
+#info-button {
+    top: 20px;
+    left: 20px;
+}
+
+#audio-control {
+    top: 20px;
+    right: 20px;
+}
+        
+    </style>
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay loop muted>
+            <source src="video/about.mp4" type="video/mp4">
+            <!-- Add additional source elements for different video formats -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="container">
+        
+        <button id="audio-control" class="button">Play</button>
+        <a href="index.html" id="info-button" class="button">home</a>
+        
+
+        <section class="title">
+            <h1>The Lonesome Cowpoke</h1>
+            <p>by Elliott Romano</p>
+        </section>
+
+        <section>
+            <h2>They never said being a cowboy would be easy...</h2>
+            <p>Hell, it's not like you get to pick anyway. You're born into it, surrounded by wide-open spaces and the vast expanse of the untamed West. It's a life carved out by grit and saddle leather, where the sunsets paint the sky in hues of orange and pink, but the days are filled with hard work and the constant dance with the land.</p>
+            <p>Out here, every sunrise is a promise, and every sunset, a reflection on the day's toil. It's a rugged existence, one that demands respect for the land and the creatures that roam it. As the dust settles on the prairie, so too does the reality of a cowboy's life. It's not for the faint-hearted, that's for damn sure.</p>
+            <h2>You wake up with the sun</h2>
+            <p>The chill of the morning air biting into your bones. The aroma of strong, black coffee wafts through the air, a ritual as old as the hills. There's a comfort in the routine, in knowing that while the world may be changing, the life of a cowboy remains steadfast, like the towering peaks of the Rockies.</p>
+            <p>The saddle becomes an extension of your body, and the rhythmic creaking of leather is the soundtrack to your days. You guide your horse through the rugged terrain, navigating the challenges that nature throws your way. It's a partnership, built on trust and understanding, where words are unnecessary, and the connection is forged through silent nods and the gentle pat on the flank.</p>
+            <p>Out here, the land is both friend and foe. The droughts test your resilience, and the storms challenge your mettle. But you press on because that's what a cowboy does. There's a quiet determination that runs deep, an unspoken code that binds you to the prairie. You mend fences, mend broken hearts, and sometimes, you mend your own wounds, both physical and emotional.</p>
+        </section>
+        <section>
+            <h2>Loneliness can settle in like the dust kicked up by a stampede.</h2>
+            <p>The vastness of the landscape stretches out in every direction, and the only company is the howling wind and the distant cry of a coyote. But there's solace in the solitude, a chance to reflect on life's choices and the path that led you to this wide, lonesome place. But thats not always the case.</p>
+            <p>In the glow of a campfire, under a blanket of stars, you find camaraderie with fellow cowboys. Stories are shared, laughter echoes through the night, and the bond of the brotherhood is forged over shared hardships and victories. It's a family of choice, bound not by blood but by a common love for the land and the freedom it offers.</p>
+        </section>
+        <section>
+            <h2>Growing up on a ranch was like living inside a storybook</h2>
+            <p>where the chapters unfolded with the changing seasons and each day brought a new lesson in hard work, responsibility, and the untamed beauty of the land. From the first time I clung to the back of a horse to the countless hours spent tending to the cattle, the ranch was more than just a home; it was a school that taught me the values that would shape my cowboy soul.</p>
+        </section>
+        <section>
+            <h2>So, yeah, they never said being a cowboy would be easy.</h2>
+            <p>But easy ain't the point. It's about resilience, grit, and the unyielding spirit that defines the American cowboy. You ride into the sunset not because it's the end, but because there's always another sunrise on the horizon, and the land, with all its challenges, awaits the next chapter in this never-ending tale of the Wild West.</p>
+        </section>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get reference to the audio element
+        const audio = new Audio('audio/avatar.wav');
+    
+        // Get reference to the button
+        const audioButton = document.getElementById('audio-control');
+    
+        // Initialize audio playing status
+        let isAudioPlaying = false;
+    
+        // Function to toggle audio play/pause and update button text
+        function toggleAudio() {
+            if (isAudioPlaying) {
+                audio.pause();
+                audioButton.textContent = 'Play';
+                audio.loop = false; // Disable looping when paused
+            } else {
+                audio.play();
+                audioButton.textContent = 'Pause';
+                audio.loop = true; // Enable looping when playing
+            }
+            isAudioPlaying = !isAudioPlaying;
+        }
+    
+        // Add click event listener to the button
+        audioButton.addEventListener('click', toggleAudio);
+    });
+    
+    document.addEventListener("DOMContentLoaded", function () {
+    // Get reference to the audio element
+    const audio = new Audio('audio/bang.mp3');
+
+    // Get reference to the button
+    const infoButton = document.getElementById('info-button');
+
+    // Function to play sound on hover
+    function playHoverSound() {
+        audio.play();
+    }
+
+    // Add event listener for mouseover event
+    infoButton.addEventListener('mouseover', playHoverSound);
+});
+    
+        </script>
+
+
+</body>
+</html>
